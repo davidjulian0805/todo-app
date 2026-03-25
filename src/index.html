@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2 class="sidebar__title">My Projects</h2>
+
+      <ul class="project-list" id="project-list"></ul>
+
+      <!-- ✅ add-project-form belongs here in the sidebar -->
+      <div class="add-project-form" id="add-project-form">
+        <button class="btn btn--add-project" id="add-project-btn">+ New Project</button>
+        <div class="add-project-input hidden" id="add-project-input">
+          <input type="text" id="project-name-input" placeholder="Project name...">
+          <div class="add-project-actions">
+            <button class="btn btn--confirm" id="project-confirm-btn">Add</button>
+            <button class="btn btn--cancel" id="project-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="main">
+      <h1 class="main__title" id="project-title">Inbox</h1>
+
+      <ul class="todo-list" id="todo-list"></ul>
+
+      <!-- ✅ Add Todo button belongs here in the main panel -->
+      <button class="btn btn--add-todo" id="add-todo-btn">+ Add Todo</button>
+    </main>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal">
+      <h2 class="modal__title" id="modal-title">Add Todo</h2>
+
+      <div class="form-group">
+        <label for="input-title">Title</label>
+        <input type="text" id="input-title" placeholder="e.g. Buy groceries">
+      </div>
+
+      <div class="form-group">
+        <label for="input-description">Description</label>
+        <textarea id="input-description" placeholder="Optional details..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="input-due-date">Due Date</label>
+        <input type="date" id="input-due-date">
+      </div>
+
+      <div class="form-group">
+        <label for="input-priority">Priority</label>
+        <select id="input-priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="input-notes">Notes</label>
+        <textarea id="input-notes" placeholder="Any extra notes..."></textarea>
+      </div>
+
+      <div class="modal__actions">
+        <button class="btn btn--cancel" id="modal-cancel-btn">Cancel</button>
+        <button class="btn btn--confirm" id="modal-confirm-btn">Add Todo</button>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

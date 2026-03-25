@@ -1,0 +1,301 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+   font-family: sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  height: 100vh;
+}
+
+/* --- LAYOUT --- */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  width: 240px;
+  background: #1f2937;
+  color: #f9fafb;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.sidebar__title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.project-item:hover,
+.project-item.active {
+  background: #374151;
+}
+
+.project-item__delete {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 4px;
+  display: none;
+}
+
+.project-item:hover .project-item__delete {
+  display: inline;
+}
+
+/* --- MAIN PANEL --- */
+.main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.main__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* --- TODO LIST --- */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border-left: 4px solid transparent;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.todo-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Priority colors on the left border */
+.todo-item--high   { border-left-color: #ef4444; }
+.todo-item--medium { border-left-color: #f59e0b; }
+.todo-item--low    { border-left-color: #22c55e; }
+
+.todo-item.complete {
+  opacity: 0.5;
+}
+
+.todo-item.complete .todo-item__title {
+  text-decoration: line-through;
+}
+
+.todo-item__title {
+  flex: 1;
+  font-weight: 500;
+}
+
+.todo-item__due {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.todo-item__due--overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.todo-item__delete {
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: none;
+}
+
+.todo-item:hover .todo-item__delete {
+  display: inline;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn--add-project {
+  background: none;
+  color: #9ca3af;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.btn--add-project:hover {
+  background: #374151;
+  color: white;
+}
+
+.btn--add-todo {
+  background: none;
+  color: #6b7280;
+  padding: 8px 0;
+}
+
+.btn--add-todo:hover {
+  color: #111;
+}
+
+.btn--cancel  { background: #e5e7eb; color: #374151; }
+.btn--confirm { background: #4f46e5; color: white; }
+.btn--confirm:hover { background: #4338ca; }
+
+/* --- MODAL --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.add-project-form {
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.add-project-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-project-input input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #4b5563;
+  background: #374151;
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.add-project-input input:focus {
+  border-color: #6366f1;
+}
+
+.add-project-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.add-project-actions .btn {
+  flex: 1;
+  font-size: 0.8rem;
+  padding: 6px;
+}
+
+.hidden {
+  display: none;
+}
